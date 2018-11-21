@@ -6,43 +6,33 @@ class ExperiencesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get experiences_url
-    assert_response :success
-  end
-
-  test "should get new" do
-    get new_experience_url
+    get experiences_url, as: :json
     assert_response :success
   end
 
   test "should create experience" do
     assert_difference('Experience.count') do
-      post experiences_url, params: { experience: { country_id: @experience.country_id, description: @experience.description, image: @experience.image, location: @experience.location, title: @experience.title, user_id: @experience.user_id } }
+      post experiences_url, params: { experience: { country_id: @experience.country_id, mood: @experience.mood, title: @experience.title } }, as: :json
     end
 
-    assert_redirected_to experience_url(Experience.last)
+    assert_response 201
   end
 
   test "should show experience" do
-    get experience_url(@experience)
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get edit_experience_url(@experience)
+    get experience_url(@experience), as: :json
     assert_response :success
   end
 
   test "should update experience" do
-    patch experience_url(@experience), params: { experience: { country_id: @experience.country_id, description: @experience.description, image: @experience.image, location: @experience.location, title: @experience.title, user_id: @experience.user_id } }
-    assert_redirected_to experience_url(@experience)
+    patch experience_url(@experience), params: { experience: { country_id: @experience.country_id, mood: @experience.mood, title: @experience.title } }, as: :json
+    assert_response 200
   end
 
   test "should destroy experience" do
     assert_difference('Experience.count', -1) do
-      delete experience_url(@experience)
+      delete experience_url(@experience), as: :json
     end
 
-    assert_redirected_to experiences_url
+    assert_response 204
   end
 end

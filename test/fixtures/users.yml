@@ -3,9 +3,9 @@
 one:
   name: MyString
   email: MyString
-  experience_id: 1
+  password_digest: <%= BCrypt::Password.create('secret') %>
 
 two:
   name: MyString
   email: MyString
-  experience_id: 1
+  password_digest: <%= BCrypt::Password.create('secret') %>

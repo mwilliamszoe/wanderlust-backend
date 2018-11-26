@@ -16,7 +16,6 @@ class ExperiencesController < ApplicationController
   # POST /experiences
   def create
     @experience = Experience.new(experience_params)
-
     if @experience.save
       render json: @experience, status: :created, location: @experience
     else

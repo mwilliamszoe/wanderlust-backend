@@ -14,13 +14,17 @@ class ApplicationController < ActionController::API
         end
     end
 
-    def authorization(request)
-        if request.header
-        :decoded_token => JWT.decode(request.header, nil, false)
-        User.find_by(:decoded_token params[:decoded_token])
-        else 
-            undefined
-            #i have no idea what i'm doing here
+    def signup
+        user = User.create(email: params[:email], password: params[:password])
+        if user.valid?
+        render :json => {
+                :token => JWT.encode({ user_id: user.id }, nil, 'none')
+                # byebug
+        }
+        else
+        render :json => {
+            :message => "Please try"
+        }, status: 400
         end
     end
 

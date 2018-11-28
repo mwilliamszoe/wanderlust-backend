@@ -14,4 +14,14 @@ class ApplicationController < ActionController::API
         end
     end
 
+    def authorization(request)
+        if request.header
+        :decoded_token => JWT.decode(request.header, nil, false)
+        User.find_by(:decoded_token params[:decoded_token])
+        else 
+            undefined
+            #i have no idea what i'm doing here
+        end
+    end
+
 end

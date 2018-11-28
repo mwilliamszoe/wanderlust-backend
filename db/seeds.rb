@@ -13,6 +13,9 @@ Experience.destroy_all
 UserExperience.destroy_all
 
 bob = User.create(name:'bob', email:'bob@mail.com', password:'dolphins')
+stacy = User.create(name:'stacy', email:'stacy@mail.com', password:'whales')
+
+
 asia = Region.create(name:'Asia', image:"https://images.unsplash.com/photo-1528884089-4582fe06c516?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=caa16390466200a3c19a4629df9b67bb&auto=format&fit=crop&w=1350&q=80")
 north_america = Region.create(name:'North & Central America', image:'https://images.pexels.com/photos/417119/pexels-photo-417119.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')
 south_america = Region.create(name:'South America', image:'https://images.unsplash.com/photo-1461863109726-246fa9598dc3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3b97aaf2bdc23863c4e1afef5c93fada&auto=format&fit=crop&w=500&q=60')

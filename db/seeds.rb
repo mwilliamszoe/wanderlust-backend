@@ -12,8 +12,8 @@ Country.destroy_all
 Experience.destroy_all
 UserExperience.destroy_all
 
-bob = User.create(name:'bob', email:'bob@mail.com', password:'dolphins')
-stacy = User.create(name:'stacy', email:'stacy@mail.com', password:'whales')
+bob = User.create(email:'bob@mail.com', password:'dolphins')
+stacy = User.create(email:'stacy@mail.com', password:'whales')
 
 
 asia = Region.create(name:'Asia', image:"https://images.unsplash.com/photo-1528884089-4582fe06c516?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=caa16390466200a3c19a4629df9b67bb&auto=format&fit=crop&w=1350&q=80")

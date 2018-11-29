@@ -3,6 +3,7 @@ class CountriesController < ApplicationController
 
   # GET /countries
   def index
+   
     @countries = Country.all
 
     render json: @countries
@@ -10,33 +11,32 @@ class CountriesController < ApplicationController
 
   # GET /countries/1
   def show
+    authorize(request)
     render json: @country
   end
 
-  # POST /countries
-  def create
-    @country = Country.new(country_params)
+  # def create
+  #   @country = Country.new(country_params)
 
-    if @country.save
-      render json: @country, status: :created, location: @country
-    else
-      render json: @country.errors, status: :unprocessable_entity
-    end
-  end
+  #   if @country.save
+  #     render json: @country, status: :created, location: @country
+  #   else
+  #     render json: @country.errors, status: :unprocessable_entity
+  #   end
+  # end
 
-  # PATCH/PUT /countries/1
-  def update
-    if @country.update(country_params)
-      render json: @country
-    else
-      render json: @country.errors, status: :unprocessable_entity
-    end
-  end
+  # def update
+  #   if @country.update(country_params)
+  #     render json: @country
+  #   else
+  #     render json: @country.errors, status: :unprocessable_entity
+  #   end
+  # end
 
-  # DELETE /countries/1
-  def destroy
-    @country.destroy
-  end
+
+  # def destroy
+  #   @country.destroy
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

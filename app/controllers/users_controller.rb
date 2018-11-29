@@ -10,6 +10,8 @@ class UsersController < ApplicationController
 
 
   def show
+    token = get_token(request)
+    byebug
     render json: @user
   end
 
@@ -37,7 +39,6 @@ class UsersController < ApplicationController
   end
 
 
-
   def update
     if @user.update(user_params)
       render json: @user
@@ -45,6 +46,7 @@ class UsersController < ApplicationController
       render json: @user.errors, status: :unprocessable_entity
     end
   end
+
 
   def destroy
     @user.destroy
@@ -56,7 +58,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:email, :password, :password_confirmation)
     end
 
 end

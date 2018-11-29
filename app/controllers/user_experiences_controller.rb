@@ -1,19 +1,16 @@
 class UserExperiencesController < ApplicationController
   before_action :set_user_experience, only: [:show, :update, :destroy]
 
-  # GET /user_experiences
   def index
     @user_experiences = UserExperience.all
 
     render json: @user_experiences
   end
 
-  # GET /user_experiences/1
   def show
     render json: @user_experience
   end
 
-  # POST /user_experiences
   def create
     @user_experience = UserExperience.new(user_experience_params)
 
@@ -24,7 +21,6 @@ class UserExperiencesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /user_experiences/1
   def update
     if @user_experience.update(user_experience_params)
       render json: @user_experience

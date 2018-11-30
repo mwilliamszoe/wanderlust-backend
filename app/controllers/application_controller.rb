@@ -53,24 +53,24 @@ class ApplicationController < ActionController::API
     #     # end
     # end
 
-    def allow_user
-        authorization_header = request.headers["Authorization"]
-        payload = nil
+    # def allow_user
+    #     authorization_header = request.headers["Authorization"]
+    #     payload = nil
     
-        if authorization_header
-          payload = authorization_header.split(' ')[1]
-        end
+    #     if authorization_header
+    #       payload = authorization_header.split(' ')[1]
+    #     end
     
-        if authorization_header && JWT.decode(payload, nil, false)[0]["user_id"] == params[:id].to_i
-          user = User.find(params[:id])
-          render json: user
-        else
+    #     if authorization_header && JWT.decode(payload, nil, false)[0]["user_id"] == params[:id].to_i
+    #       user = User.find(params[:id])
+    #       render json: user
+    #     else
 
-          render :json => {
-            :message => "You must login first."
-          }, status: 400
-        end
-        # byebug
-      end
+    #       render :json => {
+    #         :message => "You must login first."
+    #       }, status: 400
+    #     end
+    #     # byebug
+    #   end
 
 end

@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  has_many :user_experiences
-  has_many :experiences, through: :user_experience
   attributes :id, :email
+  has_many :user_experiences
+  has_many :experiences, through: :user_experiences
 end

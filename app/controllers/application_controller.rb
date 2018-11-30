@@ -3,10 +3,12 @@ class ApplicationController < ActionController::API
     def login
         user = User.find_by(email: params[:email])
         if user && user.authenticate(params[:password])
-            render :json => {
-                :token => JWT.encode({ user_id: user.id }, nil, 'none')
-                # byebug
-        }
+        token = JWT.encode({ user_id: user.id }, nil, 'none')
+        render :json => {user: user, experiences: user.experiences, jwt: token}, status: 200
+        #     render :json => {
+        #         :token => JWT.encode({ user_id: user.id }, nil, 'none')
+        #         # byebug
+        # }
         else
         render :json => {
             :message => "Invalid credentials"
@@ -28,24 +30,24 @@ class ApplicationController < ActionController::API
         end
     end
 
-    # def get_token(request)
-    #     # check for request.headers["Authorize"]
-    #     if defined?(request.headers["Authorization"])
-    #         #send back token
-    #         return request.headers["Authorization"].split(' ')[0]
-    #     else
-    #         return {
-    #             :message => "No Authorization header"
-    #         }
-    #     end
-    # end
+    def get_token(request)
+        if (request.headers["Authorization"])
+            #send back token
+            token = request.headers["Authorization"].split(' ')[0]
+            parse_token(token)
+        else
+            return {
+                :message => "No Authorization header"
+            }
+        end
+    end
 
-    # def parse_token(token)
-    #     #decode the token and ruturn the user from the encoded data
-    #     user_from_token = JWT.decode(token, nil, false)[0]["user_id"]
-    # byebug
-    #     #return false if the token is bullshit
-    # end
+    def parse_token(token)
+        #decode the token and ruturn the user from the encoded data
+        user_from_token = JWT.decode(token, nil, false)[0]["user_id"]
+        byebug
+        #return false if the token is bullshit
+    end
 
     # def authorize_user(request) 
     #     # if get_token(request)

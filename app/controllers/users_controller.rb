@@ -45,6 +45,15 @@ class UsersController < ApplicationController
     @user.destroy
   end
 
+  def myexperiences
+
+    get_token(request)
+
+    # decoded_token = JWT.decode token, nil, false
+    # decoded_token = JWT.decode(token: params[:token], nil, false)
+    render :json => {sdlkf: "lsjdfl;asj"}
+  end
+
   private
     def set_user
       @user = User.find(params[:id])

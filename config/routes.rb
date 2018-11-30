@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-  get 'sessions/create'
-  get 'sessions/destroy' 
+  # get 'sessions/new'
+  # get 'sessions/create'
+  # get 'sessions/destroy' 
   resources :user_experiences
   resources :experiences
   resources :countries, only: [:index, :show]
@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   post   '/login',   to: 'users#new'
   post   '/signup',   to: 'users#signup'
+  get    '/myexperiences', to: 'users#myexperiences'
 
 
 end

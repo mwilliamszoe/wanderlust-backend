@@ -7,9 +7,9 @@ class UserExperiencesController < ApplicationController
     render json: @user_experiences
   end
 
-  def show
-    render json: @user_experience
-  end
+  # def show
+  #   render json: @user_experience
+  # end
 
   def create
     @user_experience = UserExperience.new(user_experience_params)

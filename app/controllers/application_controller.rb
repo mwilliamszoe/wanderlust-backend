@@ -4,7 +4,7 @@ class ApplicationController < ActionController::API
         user = User.find_by(email: params[:email])
         if user && user.authenticate(params[:password])
         token = JWT.encode({ user_id: user.id }, nil, 'none')
-        render :json => {user: user, experiences: user.experiences, jwt: token}, status: 200
+        render :json => {user: user, experiences: user.experiences, jwt: token, likes: user.likes}, status: 200
         #     render :json => {
         #         :token => JWT.encode({ user_id: user.id }, nil, 'none')
         #         # byebug
@@ -30,49 +30,23 @@ class ApplicationController < ActionController::API
         end
     end
 
-    def get_token(request)
-        if (request.headers["Authorization"])
-            #send back token
-            token = request.headers["Authorization"].split(' ')[0]
-            parse_token(token)
-        else
-            return {
-                :message => "No Authorization header"
-            }
-        end
-    end
-
-    def parse_token(token)
-        #decode the token and ruturn the user from the encoded data
-        user_from_token = JWT.decode(token, nil, false)[0]["user_id"]
-        byebug
-        #return false if the token is bullshit
-    end
-
-    # def authorize_user(request) 
-    #     # if get_token(request)
-    #     #     return User.find(parse_token(token))
-    #     # end
+    # def get_token(request)
+    #     if (request.headers["Authorization"])
+    #         #send back token
+    #         token = request.headers["Authorization"].split(' ')[0]
+    #         parse_token(token)
+    #     else
+    #         return {
+    #             :message => "No Authorization header"
+    #         }
+    #     end
     # end
 
-    # def allow_user
-    #     authorization_header = request.headers["Authorization"]
-    #     payload = nil
-    
-    #     if authorization_header
-    #       payload = authorization_header.split(' ')[1]
-    #     end
-    
-    #     if authorization_header && JWT.decode(payload, nil, false)[0]["user_id"] == params[:id].to_i
-    #       user = User.find(params[:id])
-    #       render json: user
-    #     else
-
-    #       render :json => {
-    #         :message => "You must login first."
-    #       }, status: 400
-    #     end
-    #     # byebug
-    #   end
+    # def parse_token(token)
+    #     #decode the token and ruturn the user from the encoded data
+    #     user_from_token = JWT.decode(token, nil, false)[0]["user_id"]
+    #     byebug
+    #     #return false if the token is bullshit
+    # end
 
 end

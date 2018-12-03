@@ -45,6 +45,6 @@ class ExperiencesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def experience_params
-      params.require(:experience).permit(:title, :mood, :country_id)
+      params.require(:experience).permit(:title, :country_id)
     end
 end

@@ -1,7 +1,5 @@
-Rails.application.routes.draw do
-  # get 'sessions/new'
-  # get 'sessions/create'
-  # get 'sessions/destroy' 
+Rails.application.routes.draw do 
+  resources :likes, only: [:index, :create]
   resources :user_experiences
   resources :experiences
   resources :countries, only: [:index, :show]

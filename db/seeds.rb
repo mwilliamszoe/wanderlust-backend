@@ -53,8 +53,8 @@ zimbabwe = Country.create(name:'Zimbabwe', region:africa)
 egypt = Country.create(name:'Egypt', region:africa)
 morrocco = Country.create(name:'Morrocoo', region:africa)
 
-surfing = Experience.create(title:'Surfing', country:china)
-snowboarding = Experience.create(title:'Snowboarding', country:germany)
+surfing = Experience.create(title:'bobs Surfing adventure', country:china)
+snowboarding = Experience.create(title:'stacys Snowboarding adventure', country:germany)
 cooking = Experience.create(title:'Cooking', country:france)
 carnival = Experience.create(title:'Carnivale', country:brazil)
 safari = Experience.create(title:'Safari', country:kenya)
@@ -65,3 +65,6 @@ bbq = Experience.create(title:'BBQ', country:usa)
 
 ue1 = UserExperience.create(user:bob, experience:surfing)
 ue2 = UserExperience.create(user:stacy, experience:snowboarding)
+
+like1 = Like.create(user:bob, experience: bbq)
+like2 = Like.create(user:stacy, experience: safari)

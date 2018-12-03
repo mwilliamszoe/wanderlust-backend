@@ -12,7 +12,8 @@ class LikesController < ApplicationController
 
   def create
     @like = Like.new(like_params)
-
+    
+    byebug
     if @like.save
       render json: @like, status: :created, location: @like
     else
@@ -41,9 +42,8 @@ class LikesController < ApplicationController
     end
 
     def like_params
-    byebug
 
-      # params.require(:like).permit(:user_id, :experience_id)
-      params.permit(:user_id, :experience_id)
+      params.require(:like).permit(:user_id, :experience_id)
+      # params.permit(:user_id, :experience_id)
     end
 end

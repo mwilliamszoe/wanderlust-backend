@@ -1,5 +1,5 @@
 Rails.application.routes.draw do 
-  resources :likes, only: [:index, :create]
+  resources :likes
   resources :user_experiences
   resources :experiences
   resources :countries, only: [:index, :show]

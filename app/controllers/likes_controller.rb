@@ -12,8 +12,6 @@ class LikesController < ApplicationController
 
   def create
     @like = Like.new(like_params)
-    
-    byebug
     if @like.save
       render json: @like, status: :created, location: @like
     else

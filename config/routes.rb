@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   resources :users
 
   post   '/login',   to: 'users#new'
-  post   '/signup',   to: 'users#signup'
-  get    '/myexperiences', to: 'users#myexperiences'
+  post   '/signup',   to: 'users#new'
+  # get    '/myexperiences', to: 'users#myexperiences'
 
 
 end

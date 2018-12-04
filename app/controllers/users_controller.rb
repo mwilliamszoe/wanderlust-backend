@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
 
   def show
-    allow_user
+    # allow_user
     # token = get_token(request)
     # parsed_token = parse_token(token)
     render json: @user
@@ -45,14 +45,10 @@ class UsersController < ApplicationController
     @user.destroy
   end
 
-  def myexperiences
-
-    get_token(request)
-
-    # decoded_token = JWT.decode token, nil, false
-    # decoded_token = JWT.decode(token: params[:token], nil, false)
-    render :json => {sdlkf: "lsjdfl;asj"}
-  end
+  # def myexperiences
+  #   get_token(request)
+  #   render :json => {sdlkf: "lsjdfl;asj"}
+  # end
 
   private
     def set_user

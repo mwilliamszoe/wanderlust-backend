@@ -1,16 +1,9 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
 Region.destroy_all
 Country.destroy_all
 Experience.destroy_all
-UserExperience.destroy_all
+Like.destroy_all
 
 bob = User.create(email:'bob@mail.com', password:'bob')
 stacy = User.create(email:'stacy@mail.com', password:'stacy')
@@ -53,20 +46,17 @@ zimbabwe = Country.create(name:'Zimbabwe', region:africa)
 egypt = Country.create(name:'Egypt', region:africa)
 morrocco = Country.create(name:'Morrocoo', region:africa)
 
-surfing = Experience.create(title:'bobs Surfing adventure', country:china)
-snowboarding = Experience.create(title:'stacys Snowboarding adventure', country:germany)
-cooking = Experience.create(title:'Cooking', country:france)
-carnival = Experience.create(title:'Carnivale', country:brazil)
-safari = Experience.create(title:'Safari', country:kenya)
-wine_tasting = Experience.create(title:'Wine Tasing', country:spain)
-hiking = Experience.create(title:'Hiking', country:england)
-tango = Experience.create(title:'Tango', country:argentina)
-bbq = Experience.create(title:'BBQ', country:usa)
+surfing = Experience.create!(title:'Surfing', country:china, user:User.first)
+snowboarding = Experience.create!(title:'Snowboarding', country:germany, user:User.first)
+cooking = Experience.create!(title:'Cooking', country:france, user:User.second)
+carnival = Experience.create!(title:'Carnivale', country:brazil, user:User.second)
+safari = Experience.create!(title:'Safari', country:kenya, user:User.second)
+wine_tasting = Experience.create!(title:'Wine Tasing', country:spain, user:User.second)
+hiking = Experience.create!(title:'Hiking', country:england, user:User.second)
+tango = Experience.create!(title:'Tango', country:argentina, user:User.second)
+bbq = Experience.create!(title:'BBQ', country:usa, user:User.second)
 
-ue1 = UserExperience.create(user:bob, experience:surfing)
-ue2 = UserExperience.create(user:stacy, experience:snowboarding)
-
-# like1 = Like.create(user:bob, experience: bbq)
-# like1 = Like.create(user:bob, experience: tango)
-# like1 = Like.create(user:stacy, experience: tango)
-# like2 = Like.create(user:stacy, experience: safari)
+like1 = Like.create(user:bob, experience: bbq)
+like1 = Like.create(user:bob, experience: tango)
+like1 = Like.create(user:stacy, experience: tango)
+like2 = Like.create(user:stacy, experience: safari)

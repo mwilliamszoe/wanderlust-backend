@@ -4,7 +4,7 @@ class RegionsController < ApplicationController
   def index
     @regions = Region.all
 
-    render json: @regions
+    render json: @regions.to_json(include: [:countries ])
   end
 
   def show

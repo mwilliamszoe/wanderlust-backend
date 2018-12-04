@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2018_12_03_172306) do
   create_table "experiences", force: :cascade do |t|
     t.string "title"
     t.integer "country_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -36,13 +37,6 @@ ActiveRecord::Schema.define(version: 2018_12_03_172306) do
   create_table "regions", force: :cascade do |t|
     t.string "name"
     t.string "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "user_experiences", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "experience_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

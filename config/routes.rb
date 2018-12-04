@@ -1,6 +1,5 @@
 Rails.application.routes.draw do 
   resources :likes
-  resources :user_experiences
   resources :experiences
   resources :countries, only: [:index, :show]
   resources :regions, only: [:index, :show]

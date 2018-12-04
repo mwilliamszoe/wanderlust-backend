@@ -3,7 +3,8 @@ class LikesController < ApplicationController
 
   def index
     @likes = Like.all
-    render json: @likes
+    render json: @likes.to_json(include: [:user, :experience])
+    # render json: @regions.to_json(include: [:countries ])
   end
 
   def show

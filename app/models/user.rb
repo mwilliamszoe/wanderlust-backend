@@ -5,3 +5,9 @@ class User < ApplicationRecord
   has_many :likes
   has_many :liked_experiences, through: :likes, source: :experience
 end
+
+
+
+  # t.string :title
+  #     t.integer :country_id
+  #     t.integer :user_id

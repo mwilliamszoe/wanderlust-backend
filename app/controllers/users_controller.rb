@@ -4,15 +4,11 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-
-    render json: @users
+    render json: @users.to_json(include: [{liked_experiences: {include: :user}}, :experiences])
   end
 
 
   def show
-    # allow_user
-    # token = get_token(request)
-    # parsed_token = parse_token(token)
     render json: @user
   end
 
@@ -21,15 +17,15 @@ class UsersController < ApplicationController
   end
 
 
-  def create
-    @user = User.create(user_params)
-    if @user.valid?
-      @token = encode_token(user_id: @user.id)
-      render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
-    else
-      render json: { error: 'failed to create user' }, status: :not_acceptable
-    end
-  end
+  # def create
+  #   @user = User.create(user_params)
+  #   if @user.valid?
+  #     @token = encode_token(user_id: @user.id)
+  #     render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
+  #   else
+  #     render json: { error: 'failed to create user' }, status: :not_acceptable
+  #   end
+  # end
 
 
   def update
@@ -45,10 +41,6 @@ class UsersController < ApplicationController
     @user.destroy
   end
 
-  # def myexperiences
-  #   get_token(request)
-  #   render :json => {sdlkf: "lsjdfl;asj"}
-  # end
 
   private
     def set_user

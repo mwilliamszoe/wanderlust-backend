@@ -4,8 +4,8 @@ class ExperiencesController < ApplicationController
   # GET /experiences
   def index
     @experiences = Experience.all
+    render json: @experiences.to_json(include: [:user])
 
-    render json: @experiences
   end
 
   # GET /experiences/1

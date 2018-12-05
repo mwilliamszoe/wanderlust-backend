@@ -11,5 +11,5 @@ Rails.application.routes.draw do
 
   get '/users/:user_id/liked_experiences/:experience_id', to: 'users#liked_experience'
 
-
+  get '/finduserfromtoken', to: 'users#finduserfromtoken'
 end

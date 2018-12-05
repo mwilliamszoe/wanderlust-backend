@@ -20,7 +20,12 @@ class UsersController < ApplicationController
     render json: Like.find_by( user_id:params[:user_id], experience_id:params[:experience_id])
   end
 
-
+  def finduserfromtoken
+    token = request.headers[:Authorization].split(" ")[1]
+    id = JWT.decode(token, nil, false)[0]['user_id']
+    @user = User.find(id)
+    render json: @user.to_json(include: [{liked_experiences: {include: :user}}, :experiences])
+  end
   # def create
   #   @user = User.create(user_params)
   #   if @user.valid?

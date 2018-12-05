@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   post   '/signup',   to: 'users#new'
   # get    '/myexperiences', to: 'users#myexperiences'
 
+  get '/users/:user_id/liked_experiences/:experience_id', to: 'users#liked_experience'
+
 
 end

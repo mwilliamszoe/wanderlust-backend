@@ -16,6 +16,10 @@ class UsersController < ApplicationController
     login
   end
 
+  def liked_experience
+    render json: Like.find_by( user_id:params[:user_id], experience_id:params[:experience_id])
+  end
+
 
   # def create
   #   @user = User.create(user_params)

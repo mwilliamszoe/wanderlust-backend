@@ -13,7 +13,7 @@ class ExperiencesController < ApplicationController
     render json: @experience
   end
 
-  # POST /experiences
+
   def create
     @experience = Experience.new(experience_params)
     if @experience.save
@@ -45,6 +45,6 @@ class ExperiencesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def experience_params
-      params.require(:experience).permit(:title, :country_id)
+      params.require(:experience).permit(:title, :country_id, :user_id)
     end
 end

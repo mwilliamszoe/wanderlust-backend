@@ -9,7 +9,7 @@ class ApplicationController < ActionController::API
         if user && user.authenticate(params[:password])
         token = JWT.encode({ user_id: user.id }, nil, 'none')
         # render :json => {user: user, experiences: user.experiences, jwt: token, user_likes: user.likes}, status: 200
-        render :json => {user: user, liked_experiences: user.liked_experiences, jwt: token,}, status: 200
+        render :json => {user: user, like: user.likes, experience: user.experiences, jwt: token,}, status: 200
         #     render :json => {
         #         :token => JWT.encode({ user_id: user.id }, nil, 'none')
         #         # byebug
